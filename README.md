@@ -5,6 +5,7 @@ Docker Compose file for Wordpress MySQL and PhpMyAdmin (with wp-content and mysq
 `
 docker-compose up
 `
+
 PhpMyAdmin is on port 8080
 Wordpress is on port 8000
 
