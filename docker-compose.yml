@@ -4,17 +4,19 @@ services:
   db:
     image: mysql:5.7
     volumes: 
-      ['./mysql:/var/lib/mysql']
+      - ./mysql:/var/lib/mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
+  
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
       - db
+    restart: always
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
@@ -24,13 +26,26 @@ services:
   wordpress:
     depends_on:
       - db
-    image: wordpress:latest
+    image: wordpress:php7.2-fpm
     ports:
-      - "8000:80"
+      - "9000:9000"
     restart: always
-    volumes: ['./wp-content:/var/www/html/wp-content']
+    volumes: 
+      - ./wordpress:/var/www/html
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./logs/nginx:/var/log/nginx
+      - ./wordpress:/var/www/html
+    links:
+      - wordpress
+    restart: always
