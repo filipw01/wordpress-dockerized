@@ -46,6 +46,7 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./logs/nginx:/var/log/nginx
       - ./wordpress:/var/www/html
+      - ./wp-gatsby/public:/var/www/gatsby
     links:
       - wordpress
     restart: always
