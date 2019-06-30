@@ -42,6 +42,7 @@ services:
     image: nginx:latest
     ports:
       - '8000:8000'
+      - '8001:8001'
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./logs/nginx:/var/log/nginx
