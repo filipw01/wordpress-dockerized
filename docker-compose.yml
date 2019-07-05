@@ -32,6 +32,8 @@ services:
     restart: always
     volumes: 
       - ./wordpress:/var/www/html
+      - ./php.ini:/usr/local/etc/php/php.ini
+
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
