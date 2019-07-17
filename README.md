@@ -51,6 +51,12 @@ then to stop docker run
 docker-compose down
 `
 
+If you want to restart docker-compose with just one command use
+
+`
+    docker-compose restart
+`
+
 Once you've run docker containers they will restart after your computer boots up. You can disable it by deleting `restart: always` inside docker-compose.yml 
 ## Executing commands inside container
 You can get list of currently running containers with 
@@ -68,6 +74,21 @@ docker exec -it name_of_your_container bash
 ## Used ports
 * PhpMyAdmin: 8080
 * Wordpress: 8000
+
+# Common Error solutions
+## Execution time error / Timeout error
+Change:
+* `max_execution_time` inside `php.ini`
+* `fastcgi_read_timeout` inside `nginx/wordpress.conf`
+
+## File upload error / File too big
+Change:
+* `upload_max_filesize` inside `php.ini`
+* `client_max_body_size` inside `nginx/wordpress.conf`
+
+## Post (upload) error / File too big
+Change:
+* `post_max_size` inside `php.ini`
 
 
 *Enjoy Docker <3*
