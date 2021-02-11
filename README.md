@@ -1,4 +1,4 @@
-# Wordpress Dockerised
+# Wordpress Dockerized
 Docker-compose file for Wordpress with
 * PHP 7.2
 * MySQL 5.7
