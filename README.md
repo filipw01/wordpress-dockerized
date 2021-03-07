@@ -23,7 +23,6 @@ Docker-compose file for Wordpress with
 * `nginx` folder contains nginx configuration files
 * `docker-compose.yml` file contains all the services configuration, here you can change exposed ports, wordpress and database passwords and much much more
 * `php.ini` is php configuration file, here you can change php timeout and other php stuff
-* `installTheme.sh` is a shell script, that installs boilerplate theme and removes it's git origin. Remember to run it as superuser with `sudo ./installTheme.sh`
 
 # Running
 Simply run the following command in your terminal
